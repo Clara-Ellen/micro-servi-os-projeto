@@ -5,33 +5,81 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-@Entity // 1. Diz ao Spring que essa classe é uma tabela no banco de dados
-@Table(name = "curso") // 2. Define o nome exato da tabela no banco
+@Entity 
+@Table(name = "curso") 
 public class Curso {
 
-    @Id // 3. Diz que este atributo é a Chave Primária (PK)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 4. Diz que o ID é auto-incremento (serial)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "sigla", nullable = false, length = 10) // 5. Mapeia a coluna varchar
+    @Column(name = "sigla", nullable = false, length = 10)
     private String sigla;
 
-    @Column(name = "descr_curso", nullable = false) // 'descricao' no diagrama
+    @Column(name = "descr_curso", nullable = false) 
     private String descricao;
 
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
 
     @Column(name = "status")
-    private String status; // No diagrama está como tipo_status (pode usar String aqui para simplificar no 3º semestre)
+    private String status; 
 
-    // Relacionamento de 1 para Muitos com Matriz (Um curso tem várias matrizes)
-    // O 'mappedBy' diz que o mapeamento forte está na classe MatrizCurricular no atributo 'curso'
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
     private List<MatrizCurricular> matrizes;
 
-    // --- GETTERS E SETTERS ---
-    // (Você precisa gerar os Getters e Setters de todos os campos aqui embaixo)
-    // Dica no VS Code: Alt + Shift + O (ou clique com o botão direito -> Source Action -> Generate Getters and Setters)
+    public void setDataCadastro(LocalDate now) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'setDataCadastro'");
+    }
+
+    public void setStatus(String string) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'setStatus'");
+    }
+
+    public Long getId() {
+    
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public List<MatrizCurricular> getMatrizes() {
+        return matrizes;
+    }
+
+    public void setMatrizes(List<MatrizCurricular> matrizes) {
+        this.matrizes = matrizes;
+    }
+
+    
+
 }

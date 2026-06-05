@@ -1,0 +1,16 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "admin",
+            "group": "admin",
+            "database": "projeto-curso",
+            "username": "admin"
+        }
+    ]
+}
