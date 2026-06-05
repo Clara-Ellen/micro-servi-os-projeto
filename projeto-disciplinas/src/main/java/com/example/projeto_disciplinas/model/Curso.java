@@ -80,6 +80,21 @@ public class Curso {
         this.matrizes = matrizes;
     }
 
+    public void setNome(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNome'");
+    }
+
+    public void setCargaHoraria(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCargaHoraria'");
+    }
+
+    public void setCodigo(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCodigo'");
+    }
+
     
 
 }

@@ -68,4 +68,8 @@ public class Disciplina {
 
     public List<Disciplina> getPreRequisitos() { return preRequisitos; }
     public void setPreRequisitos(List<Disciplina> preRequisitos) { this.preRequisitos = preRequisitos; }
+    public void setCodigo(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCodigo'");
+    }
 }
