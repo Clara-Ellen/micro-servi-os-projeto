@@ -22,7 +22,7 @@ public class DisciplinaService {
             throw new RuntimeException("Acesso negado: Apenas administradores podem cadastrar disciplinas.");
         }
 
-     
+    
         if (disciplina.getCursos() == null || disciplina.getCursos().isEmpty()) {
             throw new RuntimeException("A disciplina deve estar vinculada a pelo menos um curso.");
         }

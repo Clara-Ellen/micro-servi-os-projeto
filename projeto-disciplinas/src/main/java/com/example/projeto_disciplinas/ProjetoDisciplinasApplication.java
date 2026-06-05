@@ -58,8 +58,6 @@ public class ProjetoDisciplinasApplication {
 
             System.out.println("Disciplinas salvas com sucesso!");
             System.out.println("--------------------------------------------");
-            System.out.println("TESTE CONCLUÍDO. VERIFIQUE O SUPABASE!");
-            System.out.println("--------------------------------------------");
         };
     }
 }
