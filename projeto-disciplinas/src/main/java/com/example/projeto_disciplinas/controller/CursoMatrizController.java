@@ -9,14 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/gateway/cursos") // Rota base no API Gateway
-@CrossOrigin(origins = "*") // Permite que o Angular (Front-end) acesse sem erro de CORS
+@RequestMapping("/api/gateway/cursos") 
+@CrossOrigin(origins = "*")
 public class CursoMatrizController {
 
     @Autowired
     private CursoMatrizService cursoMatrizService;
 
-    // Rota para Cadastrar Curso
     @PostMapping
     public ResponseEntity<?> cadastrarCurso(
             @RequestBody Curso curso, 
@@ -30,7 +29,6 @@ public class CursoMatrizController {
         }
     }
 
-    // Rota para Cadastrar Matriz Curricular
     @PostMapping("/matrizes")
     public ResponseEntity<?> cadastrarMatriz(
             @RequestBody MatrizCurricular matriz, 
