@@ -11,13 +11,12 @@ import java.time.LocalDate;
 @Service
 public class DisciplinaService {
 
-    @Autowired // Conecta com o banco de dados da disciplina
+    @Autowired 
     private DisciplinaRepository  disciplinaRepository;
 
-    // --- CADASTRO DE DISCIPLINA (Apenas ADMINISTRADOR) ---
+    
     @Transactional
     public Disciplina cadastrarDisciplina(Disciplina disciplina, String perfilUsuario) {
-        // Validação de acesso do coordenador/adm
         if (!"ADMINISTRADOR".equalsIgnoreCase(perfilUsuario)) {
             throw new RuntimeException("Acesso negado: Apenas administradores podem cadastrar disciplinas.");
         }
@@ -33,10 +32,8 @@ public class DisciplinaService {
         return  disciplinaRepository.save(disciplina);
     }
 
-    // --- CONTROLE DE PRÉ-REQUISITOS (Apenas ADMINISTRADOR) ---
     @Transactional
     public Disciplina adicionarPreRequisito(Long disciplinaId, Long preRequisitoId, String perfilUsuario) {
-        // Validação de acesso do coordenador/adm
         if (!"ADMINISTRADOR".equalsIgnoreCase(perfilUsuario)) {
             throw new RuntimeException("Acesso negado: Apenas administradores podem gerenciar pré-requisitos.");
         }
@@ -47,12 +44,12 @@ public class DisciplinaService {
         Disciplina preRequisito =  disciplinaRepository.findById(preRequisitoId)
                 .orElseThrow(() -> new RuntimeException("Disciplina de pré-requisito não encontrada."));
 
-        // Evita que a matéria dependa dela mesma
+        
         if (disciplinaId.equals(preRequisitoId)) {
             throw new RuntimeException("Uma disciplina não pode ser pré-requisito de si mesma.");
         }
 
-        // Adiciona na lista da entidade (o JPA insere na tabela pre_requisito sozinho)
+    
         disciplina.getPreRequisitos().add(preRequisito);
 
         return  disciplinaRepository.save(disciplina);

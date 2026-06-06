@@ -23,12 +23,12 @@ public class MatrizCurricular {
     @Column(name = "status")
     private String status;
 
-    // --- O RELACIONAMENTO (Chave Estrangeira / FK) ---
-    @ManyToOne // Muitas matrizes para um único Curso
-    @JoinColumn(name = "fk_curso_id", nullable = false) // Nome da coluna FK que está na tabela 'matriz_curricular' no seu diagrama
+    
+    @ManyToOne 
+    @JoinColumn(name = "fk_curso_id", nullable = false) 
     private Curso curso;
 
-    // --- GETTERS E SETTERS ---
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

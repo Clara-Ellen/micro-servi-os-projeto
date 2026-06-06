@@ -8,14 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/gateway/disciplinas")
+@RequestMapping("/api/disciplinas") 
 @CrossOrigin(origins = "*")
 public class DisciplinaController {
 
     @Autowired
     private DisciplinaService disciplinaService;
 
-    // Rota para Cadastrar Disciplina
+    
     @PostMapping
     public ResponseEntity<?> cadastrarDisciplina(
             @RequestBody Disciplina disciplina,

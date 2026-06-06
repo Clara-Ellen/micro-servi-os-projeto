@@ -19,7 +19,7 @@ public class Usuario {
     private String senha;
 
     @Column(name = "perfil", nullable = false)
-    private String perfil; // Aqui vai armazenar "ADMINISTRADOR" ou "PROFESSOR"
+    private String perfil;
 
     @Column(name = "ativo", nullable = false)
     private Boolean ativo = true;
@@ -30,20 +30,19 @@ public class Usuario {
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
-    // Bloco executado automaticamente antes de inserir no banco de dados
+    
     @PrePersist
     protected void onCreate() {
         criadoEm = LocalDateTime.now();
         atualizadoEm = LocalDateTime.now();
     }
 
-    // Bloco executado automaticamente antes de atualizar no banco de dados
+    
     @PreUpdate
     protected void onUpdate() {
         atualizadoEm = LocalDateTime.now();
     }
 
-    // --- GETTERS E SETTERS ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

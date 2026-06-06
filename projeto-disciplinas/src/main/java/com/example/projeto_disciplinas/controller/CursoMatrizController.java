@@ -8,19 +8,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/gateway/cursos") 
+
+@RestController 
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class CursoMatrizController {
 
     @Autowired
     private CursoMatrizService cursoMatrizService;
 
-    @PostMapping
+    
+    @PostMapping("/cursos") 
     public ResponseEntity<?> cadastrarCurso(
-            @RequestBody Curso curso, 
+            @RequestBody Curso curso,
             @RequestHeader("Perfil-Usuario") String perfilUsuario) {
-        try {
+         try {
             Curso novoCurso = cursoMatrizService.cadastrarCurso(curso, perfilUsuario);
             return ResponseEntity.status(HttpStatus.CREATED).body(novoCurso);
         } catch (RuntimeException e) {
@@ -29,11 +31,12 @@ public class CursoMatrizController {
         }
     }
 
-    @PostMapping("/matrizes")
+    // Rota final: /api/matrizes
+    @PostMapping("/matrizes") // Este já está correto!
     public ResponseEntity<?> cadastrarMatriz(
-            @RequestBody MatrizCurricular matriz, 
+            @RequestBody MatrizCurricular matriz,
             @RequestHeader("Perfil-Usuario") String perfilUsuario) {
-        try {
+         try {
             MatrizCurricular novaMatriz = cursoMatrizService.cadastrarMatrizCurricular(matriz, perfilUsuario);
             return ResponseEntity.status(HttpStatus.CREATED).body(novaMatriz);
         } catch (RuntimeException e) {

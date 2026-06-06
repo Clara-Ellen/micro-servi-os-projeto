@@ -20,13 +20,12 @@ public class Disciplina {
     private Integer cargaHoraria;
 
     @Column(name = "status")
-    private String status; // ATIVO ou INATIVO
+    private String status; 
 
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
 
-    // --- RELACIONAMENTO MUITOS PARA MUITOS COM CURSO ---
-    // Cria automaticamente a tabela intermediária 'curso_disciplina'
+    
     @ManyToMany
     @JoinTable(
         name = "curso_disciplina",
@@ -35,18 +34,15 @@ public class Disciplina {
     )
     private List<Curso> cursos = new ArrayList<>();
 
-    // --- AUTO-RELACIONAMENTO (Pré-requisitos) ---
-    // Uma disciplina pode ter várias disciplinas como pré-requisito
-    // Cria automaticamente a tabela intermediária 'pre_requisito'
+    
     @ManyToMany
     @JoinTable(
         name = "pre_requisito",
-        joinColumns = @JoinColumn(name = "fk_disciplina_id"),        // Disciplina atual
-        inverseJoinColumns = @JoinColumn(name = "fk_disciplina_prereq") // A disciplina que é o pré-requisito
+        joinColumns = @JoinColumn(name = "fk_disciplina_id"),        
+        inverseJoinColumns = @JoinColumn(name = "fk_disciplina_prereq")
     )
     private List<Disciplina> preRequisitos = new ArrayList<>();
 
-    // --- GETTERS E SETTERS ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -69,7 +65,7 @@ public class Disciplina {
     public List<Disciplina> getPreRequisitos() { return preRequisitos; }
     public void setPreRequisitos(List<Disciplina> preRequisitos) { this.preRequisitos = preRequisitos; }
     public void setCodigo(String string) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'setCodigo'");
     }
 }
